@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YP1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id_Color" />
+          </Key>
+          <Property Name="Id_Color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ICommentID" />
+          </Key>
+          <Property Name="ICommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="masterId" Type="int" />
+          <Property Name="requestId" Type="int" />
+        </EntityType>
+        <EntityType Name="HomeTechModel">
+          <Key>
+            <PropertyRef Name="Id_HomeTechModel" />
+          </Key>
+          <Property Name="Id_HomeTechModel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="homeTech" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Color" Type="int" />
+        </EntityType>
+        <EntityType Name="HomeTechType">
+          <Key>
+            <PropertyRef Name="Id_HomeTechType" />
+          </Key>
+          <Property Name="Id_HomeTechType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HomeTechType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProblemDescryption">
+          <Key>
+            <PropertyRef Name="Id_ProblemDescryption" />
+          </Key>
+          <Property Name="Id_ProblemDescryption" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemDescryption" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="Id_homeTechType" Type="int" />
+          <Property Name="Id_homeTechModel" Type="int" />
+          <Property Name="id_problemDescryption" Type="int" />
+          <Property Name="id_requestStatys" Type="int" />
+          <Property Name="completionDate" Type="datetime" />
+          <Property Name="repairParts" Type="nvarchar" MaxLength="50" />
+          <Property Name="masterId" Type="int" />
+          <Property Name="clientID" Type="int" />
+        </EntityType>
+        <EntityType Name="RequestStatus">
+          <Key>
+            <PropertyRef Name="Id_RequestStatus" />
+          </Key>
+          <Property Name="Id_RequestStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestStatuse" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F" Type="nvarchar" MaxLength="50" />
+          <Property Name="I" Type="nvarchar" MaxLength="50" />
+          <Property Name="O" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="passsword" Type="nvarchar" MaxLength="50" />
+          <Property Name="typeId" Type="int" />
+        </EntityType>
+        <Association Name="FK__HomeTechM__Id_Co__412EB0B6">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="HomeTechModel" Type="Self.HomeTechModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Id_Color" />
+            </Principal>
+            <Dependent Role="HomeTechModel">
+              <PropertyRef Name="Id_Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Id_home__440B1D61">
+          <End Role="HomeTechType" Type="Self.HomeTechType" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HomeTechType">
+              <PropertyRef Name="Id_HomeTechType" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Id_homeTechType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Id_home__44FF419A">
+          <End Role="HomeTechModel" Type="Self.HomeTechModel" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HomeTechModel">
+              <PropertyRef Name="Id_HomeTechModel" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Id_homeTechModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__id_prob__45F365D3">
+          <End Role="ProblemDescryption" Type="Self.ProblemDescryption" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemDescryption">
+              <PropertyRef Name="Id_ProblemDescryption" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="id_problemDescryption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__id_requ__46E78A0C">
+          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="Id_RequestStatus" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="id_requestStatys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__typeId__4BAC3F29">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YP1ModelStoreContainer">
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeTechModel" EntityType="Self.HomeTechModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeTechType" EntityType="Self.HomeTechType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemDescryption" EntityType="Self.ProblemDescryption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HomeTechM__Id_Co__412EB0B6" Association="Self.FK__HomeTechM__Id_Co__412EB0B6">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="HomeTechModel" EntitySet="HomeTechModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Id_home__440B1D61" Association="Self.FK__Request__Id_home__440B1D61">
+            <End Role="HomeTechType" EntitySet="HomeTechType" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Id_home__44FF419A" Association="Self.FK__Request__Id_home__44FF419A">
+            <End Role="HomeTechModel" EntitySet="HomeTechModel" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__id_prob__45F365D3" Association="Self.FK__Request__id_prob__45F365D3">
+            <End Role="ProblemDescryption" EntitySet="ProblemDescryption" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__id_requ__46E78A0C" Association="Self.FK__Request__id_requ__46E78A0C">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__typeId__4BAC3F29" Association="Self.FK__User__typeId__4BAC3F29">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YP1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id_Color" />
+          </Key>
+          <Property Name="Id_Color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HomeTechModel" Relationship="Self.FK__HomeTechM__Id_Co__412EB0B6" FromRole="Color" ToRole="HomeTechModel" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ICommentID" />
+          </Key>
+          <Property Name="ICommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="masterId" Type="Int32" />
+          <Property Name="requestId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HomeTechModel">
+          <Key>
+            <PropertyRef Name="Id_HomeTechModel" />
+          </Key>
+          <Property Name="Id_HomeTechModel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="homeTech" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Color" Type="Int32" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__HomeTechM__Id_Co__412EB0B6" FromRole="HomeTechModel" ToRole="Color" />
+          <NavigationProperty Name="Request" Relationship="Self.FK__Request__Id_home__44FF419A" FromRole="HomeTechModel" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="HomeTechType">
+          <Key>
+            <PropertyRef Name="Id_HomeTechType" />
+          </Key>
+          <Property Name="Id_HomeTechType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HomeTechType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="Self.FK__Request__Id_home__440B1D61" FromRole="HomeTechType" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="ProblemDescryption">
+          <Key>
+            <PropertyRef Name="Id_ProblemDescryption" />
+          </Key>
+          <Property Name="Id_ProblemDescryption" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemDescryption1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="Self.FK__Request__id_prob__45F365D3" FromRole="ProblemDescryption" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="Id_homeTechType" Type="Int32" />
+          <Property Name="Id_homeTechModel" Type="Int32" />
+          <Property Name="id_problemDescryption" Type="Int32" />
+          <Property Name="id_requestStatys" Type="Int32" />
+          <Property Name="completionDate" Type="DateTime" Precision="3" />
+          <Property Name="repairParts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="masterId" Type="Int32" />
+          <Property Name="clientID" Type="Int32" />
+          <NavigationProperty Name="HomeTechModel" Relationship="Self.FK__Request__Id_home__44FF419A" FromRole="Request" ToRole="HomeTechModel" />
+          <NavigationProperty Name="HomeTechType" Relationship="Self.FK__Request__Id_home__440B1D61" FromRole="Request" ToRole="HomeTechType" />
+          <NavigationProperty Name="ProblemDescryption" Relationship="Self.FK__Request__id_prob__45F365D3" FromRole="Request" ToRole="ProblemDescryption" />
+          <NavigationProperty Name="RequestStatus" Relationship="Self.FK__Request__id_requ__46E78A0C" FromRole="Request" ToRole="RequestStatus" />
+        </EntityType>
+        <EntityType Name="RequestStatus">
+          <Key>
+            <PropertyRef Name="Id_RequestStatus" />
+          </Key>
+          <Property Name="Id_RequestStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestStatuse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="Self.FK__Request__id_requ__46E78A0C" FromRole="RequestStatus" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__typeId__4BAC3F29" FromRole="Type" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="I" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="O" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="passsword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typeId" Type="Int32" />
+          <NavigationProperty Name="Type" Relationship="Self.FK__User__typeId__4BAC3F29" FromRole="User" ToRole="Type" />
+        </EntityType>
+        <Association Name="FK__HomeTechM__Id_Co__412EB0B6">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="HomeTechModel" Type="Self.HomeTechModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Id_Color" />
+            </Principal>
+            <Dependent Role="HomeTechModel">
+              <PropertyRef Name="Id_Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Id_home__44FF419A">
+          <End Role="HomeTechModel" Type="Self.HomeTechModel" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HomeTechModel">
+              <PropertyRef Name="Id_HomeTechModel" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Id_homeTechModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Id_home__440B1D61">
+          <End Role="HomeTechType" Type="Self.HomeTechType" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HomeTechType">
+              <PropertyRef Name="Id_HomeTechType" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Id_homeTechType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__id_prob__45F365D3">
+          <End Role="ProblemDescryption" Type="Self.ProblemDescryption" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemDescryption">
+              <PropertyRef Name="Id_ProblemDescryption" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="id_problemDescryption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__id_requ__46E78A0C">
+          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="Id_RequestStatus" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="id_requestStatys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__typeId__4BAC3F29">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="typeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YP1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" />
+          <EntitySet Name="HomeTechModel" EntityType="Self.HomeTechModel" />
+          <EntitySet Name="HomeTechType" EntityType="Self.HomeTechType" />
+          <EntitySet Name="ProblemDescryption" EntityType="Self.ProblemDescryption" />
+          <EntitySet Name="Request" EntityType="Self.Request" />
+          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK__HomeTechM__Id_Co__412EB0B6" Association="Self.FK__HomeTechM__Id_Co__412EB0B6">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="HomeTechModel" EntitySet="HomeTechModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Id_home__44FF419A" Association="Self.FK__Request__Id_home__44FF419A">
+            <End Role="HomeTechModel" EntitySet="HomeTechModel" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Id_home__440B1D61" Association="Self.FK__Request__Id_home__440B1D61">
+            <End Role="HomeTechType" EntitySet="HomeTechType" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__id_prob__45F365D3" Association="Self.FK__Request__id_prob__45F365D3">
+            <End Role="ProblemDescryption" EntitySet="ProblemDescryption" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__id_requ__46E78A0C" Association="Self.FK__Request__id_requ__46E78A0C">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__typeId__4BAC3F29" Association="Self.FK__User__typeId__4BAC3F29">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YP1ModelStoreContainer" CdmEntityContainer="YP1Entities">
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="YP1Model.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Id_Color" ColumnName="Id_Color" />
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="YP1Model.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="ICommentID" ColumnName="ICommentID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeTechModel">
+            <EntityTypeMapping TypeName="YP1Model.HomeTechModel">
+              <MappingFragment StoreEntitySet="HomeTechModel">
+                <ScalarProperty Name="Id_HomeTechModel" ColumnName="Id_HomeTechModel" />
+                <ScalarProperty Name="homeTech" ColumnName="homeTech" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Id_Color" ColumnName="Id_Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeTechType">
+            <EntityTypeMapping TypeName="YP1Model.HomeTechType">
+              <MappingFragment StoreEntitySet="HomeTechType">
+                <ScalarProperty Name="Id_HomeTechType" ColumnName="Id_HomeTechType" />
+                <ScalarProperty Name="HomeTechType1" ColumnName="HomeTechType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemDescryption">
+            <EntityTypeMapping TypeName="YP1Model.ProblemDescryption">
+              <MappingFragment StoreEntitySet="ProblemDescryption">
+                <ScalarProperty Name="Id_ProblemDescryption" ColumnName="Id_ProblemDescryption" />
+                <ScalarProperty Name="ProblemDescryption1" ColumnName="ProblemDescryption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="YP1Model.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="requestID" ColumnName="requestID" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="Id_homeTechType" ColumnName="Id_homeTechType" />
+                <ScalarProperty Name="Id_homeTechModel" ColumnName="Id_homeTechModel" />
+                <ScalarProperty Name="id_problemDescryption" ColumnName="id_problemDescryption" />
+                <ScalarProperty Name="id_requestStatys" ColumnName="id_requestStatys" />
+                <ScalarProperty Name="completionDate" ColumnName="completionDate" />
+                <ScalarProperty Name="repairParts" ColumnName="repairParts" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStatus">
+            <EntityTypeMapping TypeName="YP1Model.RequestStatus">
+              <MappingFragment StoreEntitySet="RequestStatus">
+                <ScalarProperty Name="Id_RequestStatus" ColumnName="Id_RequestStatus" />
+                <ScalarProperty Name="RequestStatuse" ColumnName="RequestStatuse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="YP1Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Type1" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="YP1Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="O" ColumnName="O" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="passsword" ColumnName="passsword" />
+                <ScalarProperty Name="typeId" ColumnName="typeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
