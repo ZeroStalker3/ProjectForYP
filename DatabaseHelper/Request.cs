@@ -14,10 +14,18 @@ namespace ProjectForYP.DatabaseHelper
     
     public partial class Request
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Request()
+        {
+            this.Comment = new HashSet<Comment>();
+        }
+    
         public int requestID { get; set; }
-        public Nullable<System.DateTime> startDate { get; set; }
+        public System.DateTime startDate { get; set; }
         public Nullable<int> Id_homeTechType { get; set; }
-        public Nullable<int> Id_homeTechModel { get; set; }
+        public string TechModelManufaacturer { get; set; }
+        public string TechModelName { get; set; }
+        public Nullable<int> Id_Color { get; set; }
         public Nullable<int> id_problemDescryption { get; set; }
         public Nullable<int> id_requestStatys { get; set; }
         public Nullable<System.DateTime> completionDate { get; set; }
@@ -25,7 +33,9 @@ namespace ProjectForYP.DatabaseHelper
         public Nullable<int> masterId { get; set; }
         public Nullable<int> clientID { get; set; }
     
-        public virtual HomeTechModel HomeTechModel { get; set; }
+        public virtual Color Color { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comment { get; set; }
         public virtual HomeTechType HomeTechType { get; set; }
         public virtual ProblemDescryption ProblemDescryption { get; set; }
         public virtual RequestStatus RequestStatus { get; set; }

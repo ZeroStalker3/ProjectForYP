@@ -44,7 +44,7 @@ namespace ProjectForYP.pages
                 var userobj = OdbConnectionHelper.entObj.User.FirstOrDefault(x => 
                 x.login == LoginTxt.Text && x.passsword == PassBox.Password);
 
-                if (userobj != null)
+                if (userobj == null)
                 {
                     MessageBox.Show("Что-то не так", "Ошибка",
                         MessageBoxButton.OK, MessageBoxImage.Error);
@@ -62,7 +62,7 @@ namespace ProjectForYP.pages
                     {
                         MessageBox.Show("Авторизация успешна", "Уведомление"
                             ,MessageBoxButton.OK, MessageBoxImage.Information);
-                        FrameApp.frmObj.Navigate(new PageZakazchik());
+                        FrameApp.frmObj.Navigate(new PageZakazchik(userobj));
                     }
                 }
             }

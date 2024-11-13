@@ -8,9 +8,16 @@
       Title="PageLogin">
 
     <Grid>
-        <StackPanel 
+        
+        <StackPanel Margin="10"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center">
+            <TextBlock Text="ООО БытСервис" 
+                   FontSize="20pt" 
+                   HorizontalAlignment="Center"
+                       Height="40"
+                   VerticalAlignment="Top"
+                   Margin="0 10 0 0"/>
             <TextBlock 
                 Text="Логин: " 
                 Margin="0 10 0 10"
@@ -18,6 +25,7 @@
             <TextBox 
                 x:Name="LoginTxt"
                 Height="30" 
+                VerticalContentAlignment="Center"
                 Width="225"/>
 
             <TextBlock 
@@ -27,6 +35,7 @@
             <PasswordBox 
                 Name="PassBox"
                 Height="30" 
+                VerticalContentAlignment="Center"
                 Width="225" PreviewKeyDown="PassBox_PreviewKeyDown"/>
 
             <DockPanel Margin="0 10 0 0">

@@ -9,6 +9,208 @@
       Title="PageZakazchik">
 
     <Grid>
-        
-    </Grid>
+        <TabControl>
+            <TabItem Header="Добавление заявки">
+                <Grid>
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <DockPanel>
+                            <StackPanel 
+                            Margin="5">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                Text="Фамилия"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                                <TextBlock
+                                                        FontSize="12pt"
+
+                                x:Name="textBoxsurName"
+VerticalAlignment="Center" HorizontalAlignment="Center"                               Width="162"/>
+                            </StackPanel>
+                            <!--Фаммилия-->
+                            <StackPanel 
+                            Margin="5">
+                                <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Имя"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                                <TextBlock
+                                                        FontSize="12pt"
+
+                                x:Name="TextBoxName"
+                        HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                                Width="162"/>
+                            </StackPanel>
+                            <!--Имя-->
+                            <StackPanel 
+                            Margin="5">
+                                <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Отчество"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"/>
+                                <TextBlock
+                                                        FontSize="12pt"
+
+                                x:Name="texboxMiddleName"
+                VerticalAlignment="Center"  HorizontalAlignment="Center"
+                                Width="162"/>
+                            </StackPanel>
+                            <!--Отчество-->
+                        </DockPanel>
+
+
+
+
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="330">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Text="Номер телефона"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                            <TextBlock
+                                x:Name="textBoxPhone" 
+                VerticalAlignment="Center"                                 FontSize="12pt"
+
+                                HorizontalAlignment="Right"
+                                Width="162"
+                                PreviewTextInput="textBox_PreviewTextInput"
+                                PreviewKeyDown="textBoxPhone_PreviewKeyDown" 
+                                />
+                        </DockPanel>
+                        <!--Номер телефона-->
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="330">
+                            <TextBlock 
+                                Margin="0 0 10 0"
+                                FontSize="12pt"
+                                VerticalAlignment="Center"
+                                Text="Вид бытовой техники"/>
+                            <ComboBox 
+                                x:Name="cmbTechType"/>
+                        </DockPanel>
+                        <!--виды бытовой техники-->
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="504">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Text="Производитель бытовой техники"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                            <TextBox
+                                HorizontalAlignment="Left" 
+                VerticalContentAlignment="Center"
+                                x:Name="textBoxTecproizvoditel"
+                                Width="162"/>
+                        </DockPanel>
+                        <!--Производитель бытовой техники-->
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="390">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Text="Модель бытовой техники"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                            <TextBox
+                                HorizontalAlignment="Left" 
+                VerticalContentAlignment="Center"
+                                x:Name="textBoxTechModel"
+                                Width="162"/>
+                        </DockPanel>
+                        <!--модель бытовой техники-->
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="345">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Text="Цвет бытовой техники"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                            <ComboBox
+                                HorizontalAlignment="Left" 
+                VerticalContentAlignment="Center"
+                                x:Name="cmbColor"
+                                Width="162"/>
+                        </DockPanel>
+                        <!--Цвет бытовой техники-->
+                        <DockPanel 
+                            Margin="5"
+                            Height="30"
+                            Width="330">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Text="Описание проблемы"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                            <ComboBox
+                                HorizontalAlignment="Right" 
+                VerticalContentAlignment="Center"
+                                x:Name="cmbdescription"
+                                Width="162"/>
+                        </DockPanel>
+                        <!--описание работы-->
+                        <!--<DockPanel
+                            Margin="0 5 0 10"
+                            Height="30"
+                            Width="330">
+                <TextBlock 
+                                HorizontalAlignment="Left"
+                                Text="Статус работы"
+                                FontSize="12pt"
+                                Margin="0 0 10 0"
+                                VerticalAlignment="Center"/>
+                <ComboBox 
+                                Name="cmbstatus"
+                                HorizontalAlignment="Right"
+                                Width="162"/>
+            </DockPanel>-->
+                        <!--Статус-->
+                        <DockPanel 
+                            Margin="0 0 10 0"
+                            HorizontalAlignment="Center">
+                            <Button 
+                            Height="30" 
+                            Width="130"
+                            x:Name="AddBtn"
+                            Click="AddBtn_Click"
+                                Margin="0 0 10 0"
+                            Content="Добавить"/>
+                            <Button
+                                Height="30"
+                                Width="130"
+                                x:Name="reset"
+                                Click="reset_Click"
+                                Content="Очистить поля"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                    Height="20" Width="90"
+                    Content="Назад"
+                    Name="Back"
+                    Click="Back_Click"/>    </Grid>
 </Page>

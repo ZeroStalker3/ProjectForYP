@@ -9,13 +9,10 @@
         WindowStartupLocation="CenterScreen"
         Height="450" Width="800">
     <Grid>
-        <TextBlock Text="ООО БытСервис" 
-                   FontSize="20pt" 
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Margin="0 10 0 0"/>
-        <Frame x:Name="MainFrm" 
+        <StackPanel>
+            <Frame x:Name="MainFrm" 
                NavigationUIVisibility="Hidden"
                />
+        </StackPanel>
     </Grid>
 </Window>

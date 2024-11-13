@@ -12,14 +12,12 @@ namespace ProjectForYP.DatabaseHelper
     using System;
     using System.Collections.Generic;
     
-    public partial class Comment
+    public partial class sysdiagrams
     {
-        public int CommentID { get; set; }
-        public string message { get; set; }
-        public Nullable<int> masterId { get; set; }
-        public Nullable<int> requestId { get; set; }
-    
-        public virtual Request Request { get; set; }
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

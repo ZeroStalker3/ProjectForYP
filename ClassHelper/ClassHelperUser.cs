@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectForYP.DatabaseHelper
+namespace ProjectForYP.ClassHelper
 {
-    class OdbConnectionHelper
+    class ClassHelperUser
     {
-        public static YP1Entities2 entObj;
+        public static int UserId { get; set; }
     }
 }

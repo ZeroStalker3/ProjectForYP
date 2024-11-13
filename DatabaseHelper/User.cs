@@ -14,6 +14,12 @@ namespace ProjectForYP.DatabaseHelper
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Comment = new HashSet<Comment>();
+        }
+    
         public int UserId { get; set; }
         public string F { get; set; }
         public string I { get; set; }
@@ -23,6 +29,8 @@ namespace ProjectForYP.DatabaseHelper
         public string passsword { get; set; }
         public Nullable<int> typeId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comment { get; set; }
         public virtual Type Type { get; set; }
     }
 }
