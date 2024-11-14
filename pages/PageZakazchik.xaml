@@ -208,6 +208,7 @@ VerticalAlignment="Center" HorizontalAlignment="Center"                         
             </TabItem>
             <TabItem Header="Изменение заявки">
                 <DataGrid
+                    AutoGenerateColumns="False"
                     x:Name="GridList">
                     <DataGrid.Columns>
                         <DataGridTextColumn
