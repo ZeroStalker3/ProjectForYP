@@ -3,6 +3,7 @@ using ProjectForYP.DatabaseHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ProjectForYP.pages
 {
@@ -34,87 +36,58 @@ namespace ProjectForYP.pages
         string colortech;
         string statusc;
 
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public PageMain()
         {
             InitializeComponent();
+            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).ToList();
 
-            dateload();
+            GridList1.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).ToList();
+            
+            SetTimer();
         }
 
-        private void dateload()
+        private void SetTimer()
         {
-            cmbTechType.SelectedValuePath = "Id_HomeTechType";
-            cmbTechType.DisplayMemberPath = "HomeTechType1";
-            cmbTechType.ItemsSource = OdbConnectionHelper.entObj.HomeTechType.ToList();
-
-            cmbstatus.SelectedValuePath = "Id_RequestStatus";
-            cmbstatus.DisplayMemberPath = "RequestStatuse";
-            cmbstatus.ItemsSource = OdbConnectionHelper.entObj.RequestStatus.ToList();
-
-            cmbColor.SelectedValuePath = "Id_Color";
-            cmbColor.DisplayMemberPath = "Color1";
-            cmbColor.ItemsSource = OdbConnectionHelper.entObj.Color.ToList();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
         }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).ToList();
+
+            GridList1.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).ToList();
+
+            donerequest.Text = $"Количество выполненых: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).Count())}";
+            workrequest.Text = $"Количество в работе: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 1).Count())}";
+            newrequest.Text = $"Количество новых: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).Count())}";
+        }
+
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             FrameApp.frmObj.GoBack();
         }
 
-        private void textBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (!(Char.IsDigit(e.Text, 0) || (e.Text == ".")
-            && (!textBoxPhone.Text.Contains(".")
-            && textBoxPhone.Text.Length != 0)))
-            {
-                e.Handled = true;
-            }
+            FrameApp.frmObj.Navigate(new PageIzmenitmaster((sender as Button).DataContext as Request));
         }
 
-        private void textBoxPhone_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void Createe_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-        }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
-            surname = textBoxsurName.Text;
-            name = textBoxsurName.Text;
-            middlename = textBoxsurName.Text;
-            description = textBoxdescription.Text;
-            model = textBoxTechModel.Text;
-            proizvodil = textBoxTecproizvoditel.Text;
-            techtype = Convert.ToString(cmbTechType.SelectedValue);
-            colortech = Convert.ToString(cmbColor.SelectedValue);
-            statusc = Convert.ToString(cmbstatus.SelectedValue);
-            int phone = Convert.ToInt32(textBoxPhone.Text);
+            //System.DateTime date1 = System.DateTime.Now;
+            //System.DateTime date2 = new System.DateTime(2023, 11, 14);
+            //System.TimeSpan timeSpan = date1.Subtract(date2);
+            //MessageBox.Show(Convert.ToString((date2 - date1).TotalDays));
 
-            User user = new User
-            {
-                F = surname,
-                I = name,
-                O = middlename,
-                phone = phone,
-
-            };
-        }
-
-        private void reset_Click(object sender, RoutedEventArgs e)
-        {
-            textBoxsurName.Clear();
-            texboxMiddleName.Clear();
-            TextBoxName.Clear();
-            textBoxPhone.Clear();
-            cmbColor.SelectedItem = null;
-            cmbstatus.SelectedItem = null;
-            cmbTechType.SelectedItem = null;
-            textBoxTecproizvoditel.Clear();
-            textBoxTechModel.Clear();
-            textBoxdescription.Clear();
+            Request request = (Request)(sender as Button).DataContext;
+            MessageBox.Show($"Количество дней: {Convert.ToString(Math.Round(((DateTime)request.completionDate - (DateTime)request.startDate).TotalDays))}\n Используемые детали: {request.repairParts}" , "Отчет"
+                , MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

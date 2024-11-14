@@ -121,6 +121,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="pages\PageIzmenit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\PageIzmenitmaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +147,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pages\PageIzmenit.xaml.cs">
+      <DependentUpon>PageIzmenit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\PageIzmenitmaster.xaml.cs">
+      <DependentUpon>PageIzmenitmaster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\PageLogin.xaml.cs">
       <DependentUpon>PageLogin.xaml</DependentUpon>
     </Compile>

@@ -48,7 +48,7 @@
           <Property Name="id_problemDescryption" Type="int" />
           <Property Name="id_requestStatys" Type="int" />
           <Property Name="completionDate" Type="date" />
-          <Property Name="repairParts" Type="nvarchar" MaxLength="50" />
+          <Property Name="repairParts" Type="nvarchar(max)" />
           <Property Name="masterId" Type="int" />
           <Property Name="clientID" Type="int" />
         </EntityType>
@@ -303,7 +303,7 @@
           <Property Name="id_problemDescryption" Type="Int32" />
           <Property Name="id_requestStatys" Type="Int32" />
           <Property Name="completionDate" Type="DateTime" Precision="0" />
-          <Property Name="repairParts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="repairParts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="masterId" Type="Int32" />
           <Property Name="clientID" Type="Int32" />
           <NavigationProperty Name="Color" Relationship="YP1Model.FK_Request_Color" FromRole="Request" ToRole="Color" />
@@ -437,7 +437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

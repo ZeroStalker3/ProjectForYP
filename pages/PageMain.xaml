@@ -10,199 +10,178 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="Добавление заявок">
+            <TabItem Header="Обработка заявки">
+                <Grid>
+
+                    <DataGrid
+                        IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    x:Name="GridList">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding startDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding requestID}"
+                            Header="Номер заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding RequestStatus.RequestStatuse}"
+                            Header="Статус"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding HomeTechType.HomeTechType1}"
+                            Header="Тип"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelManufaacturer}"
+                            Header="Производитель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelName}"
+                            Header="Модель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding completionDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата завершения"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button 
+                                        Name="Edit" 
+                                        Click="Edit_Click" 
+                                        Height="30" 
+                                        Width="120"
+                                        Content="Изменить"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Все заявки">
+                <Grid>
+                    <DataGrid
+                        IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    x:Name="allrequest">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding startDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding requestID}"
+                            Header="Номер заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding RequestStatus.RequestStatuse}"
+                            Header="Статус"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding HomeTechType.HomeTechType1}"
+                            Header="Тип"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelManufaacturer}"
+                            Header="Производитель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelName}"
+                            Header="Модель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding completionDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата завершения"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding repairParts}"
+                            Header="Детали"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сделать отчет">
+                <Grid>
+                    <StackPanel>
+
+                        <DataGrid
+                        IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    x:Name="GridList1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding startDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата заказа"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding requestID}"
+                            Header="Номер заказа"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding RequestStatus.RequestStatuse}"
+                            Header="Статус"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding HomeTechType.HomeTechType1}"
+                            Header="Тип"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelManufaacturer}"
+                            Header="Производитель"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelName}"
+                            Header="Модель"/>
+                                <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding completionDate, StringFormat=\{0:dd.MM.yy\}}"
+                            Header="Дата завершения"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                            Content="Создать" 
+                            FontSize="14pt"
+                            Name="Createe"
+                            Click="Createe_Click"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Мониторинг">
                 <Grid>
                     <StackPanel
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                        <DockPanel>
-                            <StackPanel 
-                            Margin="5">
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                Text="Фамилия"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                                <TextBox 
-                                x:Name="textBoxsurName"
-                VerticalContentAlignment="Center"
-                                Width="162"/>
-                            </StackPanel>
-                            <!--Фаммилия-->
-                            <StackPanel 
-                            Margin="5">
-                                <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="Имя"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                                <TextBox
-                                x:Name="TextBoxName"
-                VerticalContentAlignment="Center"
-                                Width="162"/>
-                            </StackPanel>
-                            <!--Имя-->
-                            <StackPanel 
-                            Margin="5">
-                                <TextBlock
-                                HorizontalAlignment="Center"
-                                Text="Отчество"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"/>
-                                <TextBox
-                                x:Name="texboxMiddleName"
-                VerticalContentAlignment="Center"
-                                Width="162"/>
-                            </StackPanel>
-                            <!--Отчество-->
-                        </DockPanel>
-                        
-                        
-                        
-                        
-                        <DockPanel 
+                        <TextBlock
                             Margin="5"
                             Height="30"
-                            Width="330">
-                            <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="Номер телефона"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <TextBox
-                                x:Name="textBoxPhone" 
-                VerticalContentAlignment="Center"
-                                HorizontalAlignment="Right"
-                                Width="162"
-                                PreviewTextInput="textBox_PreviewTextInput"
-                                PreviewKeyDown="textBoxPhone_PreviewKeyDown" 
-                                />
-                        </DockPanel> <!--Номер телефона-->
-                        <DockPanel 
+                            FontSize="12pt"
+                            Text="Количество выполненых: 0"
+                            x:Name="donerequest"/>
+                        <TextBlock
+                            Height="30"
+                            FontSize="12pt"
                             Margin="5"
+                            Text="Количество в работе: 0"
+                            x:Name="workrequest"/>
+                        <TextBlock
+                            Text="Количество новых: 0"
                             Height="30"
-                            Width="330">
-                            <TextBlock 
-                                Margin="0 0 10 0"
-                                FontSize="12pt"
-                                VerticalAlignment="Center"
-                                Text="Вид бытовой техники"/>
-                            <ComboBox 
-                                x:Name="cmbTechType"/>
-                        </DockPanel> <!--виды бытовой техники-->
-                        <DockPanel 
+                            FontSize="12pt"
                             Margin="5"
-                            Height="30"
-                            Width="504">
-                            <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="Производитель бытовой техники"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <TextBox
-                                HorizontalAlignment="Left" 
-                VerticalContentAlignment="Center"
-                                x:Name="textBoxTecproizvoditel"
-                                Width="162"/>
-                        </DockPanel>
-                        <!--Производитель бытовой техники-->
-                        <DockPanel 
-                            Margin="5"
-                            Height="30"
-                            Width="390">
-                            <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="Модель бытовой техники"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <TextBox
-                                HorizontalAlignment="Left" 
-                VerticalContentAlignment="Center"
-                                x:Name="textBoxTechModel"
-                                Width="162"/>
-                        </DockPanel>
-                        <!--модель бытовой техники-->
-                        <DockPanel 
-                            Margin="5"
-                            Height="30"
-                            Width="345">
-                            <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="Цвет бытовой техники"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <ComboBox
-                                HorizontalAlignment="Left" 
-                VerticalContentAlignment="Center"
-                                x:Name="cmbColor"
-                                Width="162"/>
-                        </DockPanel>
-                        <!--Цвет бытовой техники-->
-                        <DockPanel 
-                            Margin="5"
-                            Height="30"
-                            Width="330">
-                            <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="Описание проблемы"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <TextBox
-                                HorizontalAlignment="Right" 
-                VerticalContentAlignment="Center"
-                                x:Name="textBoxdescription"
-                                Width="162"/>
-                        </DockPanel> <!--описание работы-->
-                        <DockPanel
-                            Margin="0 5 0 10"
-                            Height="30"
-                            Width="330">
-                            <TextBlock 
-                                HorizontalAlignment="Left"
-                                Text="Статус работы"
-                                FontSize="12pt"
-                                Margin="0 0 10 0"
-                                VerticalAlignment="Center"/>
-                            <ComboBox 
-                                Name="cmbstatus"
-                                HorizontalAlignment="Right"
-                                Width="162"/>
-                        </DockPanel> <!--Статус-->
-                        <DockPanel 
-                            Margin="0 0 10 0"
-                            HorizontalAlignment="Center">
-                            <Button 
-                            Height="30" 
-                            Width="130"
-                            x:Name="AddBtn"
-                            Click="AddBtn_Click"
-                                Margin="0 0 10 0"
-                            Content="Добавить"/>
-                            <Button
-                                Height="30"
-                                Width="130"
-                                x:Name="reset"
-                                Click="reset_Click"
-                                Content="Очистить поля"/>
-                        </DockPanel>
+                            x:Name="newrequest"/>
                     </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Редактирование заявок">
-                <Grid>
-                    
-                </Grid>
-            </TabItem>
-            <TabItem Header="Статус заявок">
-                <Grid>
-                    
                 </Grid>
             </TabItem>
         </TabControl>
