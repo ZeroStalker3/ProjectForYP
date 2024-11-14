@@ -54,6 +54,8 @@ namespace ProjectForYP.pages
             cmbColor.SelectedValuePath = "Id_Color";
             cmbColor.DisplayMemberPath = "Color1";
             cmbColor.ItemsSource = OdbConnectionHelper.entObj.Color.ToList();
+
+            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.clientID == idclient).ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -137,6 +139,11 @@ namespace ProjectForYP.pages
             textBoxTecproizvoditel.Clear();
             textBoxTechModel.Clear();
             cmbdescription.SelectedItem = null;
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

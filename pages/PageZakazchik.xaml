@@ -206,6 +206,42 @@ VerticalAlignment="Center" HorizontalAlignment="Center"                         
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem Header="Изменение заявки">
+                <DataGrid
+                    x:Name="GridList">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding startDate}"
+                            Header="Дата заказа"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="Номер заказа"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="Статус"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="Тип"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="Производитель"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="модель"/>
+                        <DataGridTextColumn
+                            Width="*"
+                            Header="Дата завершения"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Name="Edit" Click="Edit_Click" Height="30" Width="120"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
         </TabControl>
         <Button HorizontalAlignment="Right"
                 VerticalAlignment="Top"
