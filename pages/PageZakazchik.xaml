@@ -64,10 +64,6 @@ VerticalAlignment="Center" HorizontalAlignment="Center"                         
                             </StackPanel>
                             <!--Отчество-->
                         </DockPanel>
-
-
-
-
                         <DockPanel 
                             Margin="5"
                             Height="30"
@@ -163,7 +159,7 @@ VerticalAlignment="Center" HorizontalAlignment="Center"                         
                                 FontSize="12pt"
                                 Margin="0 0 10 0"
                                 VerticalAlignment="Center"/>
-                            <ComboBox
+                            <TextBox
                                 HorizontalAlignment="Right" 
                 VerticalContentAlignment="Center"
                                 x:Name="cmbdescription"
@@ -207,41 +203,56 @@ VerticalAlignment="Center" HorizontalAlignment="Center"                         
                 </Grid>
             </TabItem>
             <TabItem Header="Изменение заявки">
-                <DataGrid
+                <Grid>
+                    <DataGrid
+                        IsReadOnly="True"
                     AutoGenerateColumns="False"
                     x:Name="GridList">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
                             Width="*"
                             Binding="{Binding startDate}"
                             Header="Дата заказа"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding requestID}"
                             Header="Номер заказа"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding RequestStatus.RequestStatuse}"
                             Header="Статус"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding HomeTechType.HomeTechType1}"
                             Header="Тип"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding TechModelManufaacturer}"
                             Header="Производитель"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding TechModelName}"
                             Header="модель"/>
-                        <DataGridTextColumn
+                            <DataGridTextColumn
                             Width="*"
+                            Binding="{Binding completionDate}"
                             Header="Дата завершения"/>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Name="Edit" Click="Edit_Click" Height="30" Width="120"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button 
+                                        Name="Edit" 
+                                        Click="Edit_Click" 
+                                        Height="30" 
+                                        Width="120"
+                                        Content="Изменить"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Frame x:Name="editFrm" NavigationUIVisibility="Hidden"/>
+                </Grid>
             </TabItem>
         </TabControl>
         <Button HorizontalAlignment="Right"

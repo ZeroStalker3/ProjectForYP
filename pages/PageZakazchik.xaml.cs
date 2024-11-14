@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace ProjectForYP.pages
 {
@@ -23,6 +24,7 @@ namespace ProjectForYP.pages
         string colortech;
         string statusc;
         int idclient;
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public PageZakazchik(User user)
         {
@@ -35,7 +37,22 @@ namespace ProjectForYP.pages
             idclient = user.UserId;
 
             dateload();
+            SetTimer();
+
         }
+
+        private void SetTimer()
+        {
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.clientID == idclient).ToList();
+        }
+
 
         private void dateload()
         {
@@ -47,9 +64,9 @@ namespace ProjectForYP.pages
             //cmbstatus.DisplayMemberPath = "RequestStatuse";
             //cmbstatus.ItemsSource = OdbConnectionHelper.entObj.RequestStatus.ToList();
 
-            cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
-            cmbdescription.DisplayMemberPath = "ProblemDescryption1";
-            cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
+            //cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
+            //cmbdescription.DisplayMemberPath = "ProblemDescryption1";
+            //cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
 
             cmbColor.SelectedValuePath = "Id_Color";
             cmbColor.DisplayMemberPath = "Color1";
@@ -86,7 +103,7 @@ namespace ProjectForYP.pages
             surname = textBoxsurName.Text;
             name = TextBoxName.Text;
             middlename = texboxMiddleName.Text;
-            description = Convert.ToString(cmbdescription.SelectedValue);
+            description = Convert.ToString(cmbdescription.Text);
             model = textBoxTechModel.Text;
             proizvodil = textBoxTecproizvoditel.Text;
             techtype = Convert.ToString(cmbTechType.SelectedValue);
@@ -106,17 +123,17 @@ namespace ProjectForYP.pages
                 TechModelName = model,
                 Id_Color = Convert.ToInt32(colortech),
                 id_requestStatys = 3,
-                id_problemDescryption = Convert.ToInt32(description),
+                problemDescryption = description ,
                 completionDate = null,
                 clientID = idclient
             };
 
             var resulte = MessageBox.Show("Оставить заявку?", "Уведомление",
-                MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (resulte == MessageBoxResult.Yes)
             {
                 MessageBox.Show("Заявка оставлена", "Уведомление",
-                MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                MessageBoxButton.OK, MessageBoxImage.Information);
                 OdbConnectionHelper.entObj.Request.Add(request);
                 OdbConnectionHelper.entObj.SaveChanges();
             }
@@ -138,12 +155,12 @@ namespace ProjectForYP.pages
             cmbTechType.SelectedItem = null;
             textBoxTecproizvoditel.Clear();
             textBoxTechModel.Clear();
-            cmbdescription.SelectedItem = null;
+            cmbdescription.Clear();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameApp.frmObj.Navigate(new PageIzmenit((sender as Button).DataContext as Request));
         }
     }
 }

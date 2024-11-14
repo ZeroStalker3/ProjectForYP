@@ -36,6 +36,7 @@
                 Height="30"  
                 VerticalContentAlignment="Center"
                 Name="Pass"
+                PreviewKeyDown="Pass_PreviewKeyDown"
                 Width="225"/>
 
             <TextBlock 
@@ -45,8 +46,63 @@
             <TextBox 
                 Height="30" 
                 Name="RepPass" 
+                PreviewKeyDown="Pass_PreviewKeyDown"
                 VerticalContentAlignment="Center"
                 Width="225"/>
+                <TextBlock 
+         Height="30"
+         Margin="0 10 0 10"
+         Text="Фамилия"
+         FontSize="15pt"
+         VerticalAlignment="Center"
+                    
+         HorizontalAlignment="Center"/>
+                <TextBox
+         Margin="5"                VerticalContentAlignment="Center"
+
+         Height="30"
+         Name="familia"
+         />
+
+                <TextBlock 
+         Height="30"
+         Margin="0 10 0 10"
+         Text="Имя"
+         FontSize="15pt"
+         VerticalAlignment="Center"
+         HorizontalAlignment="Center"/>
+                <TextBox
+         Margin="5"
+         Name="Name"                VerticalContentAlignment="Center"
+
+         Height="30"/>
+
+                <TextBlock 
+         Height="30"
+         Margin="0 10 0 10"
+         Text="Отчество"
+         FontSize="15pt"
+         VerticalAlignment="Center"
+         HorizontalAlignment="Center"/>
+                <TextBox
+         Margin="5"
+         Height="30"                VerticalContentAlignment="Center"
+
+         Name="otchestvo"/>
+
+                <TextBlock 
+         Height="30"
+         Margin="0 10 0 10"
+         Text="Телефон"
+         FontSize="15pt"
+         VerticalAlignment="Center"
+         HorizontalAlignment="Center"/>
+                <TextBox
+         Margin="5"
+         Name="Phon"                VerticalContentAlignment="Center"
+
+         Height="30"/>
+
 
             <DockPanel Margin="0 10 0 0">
                 <Button 
