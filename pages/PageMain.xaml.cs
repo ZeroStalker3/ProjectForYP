@@ -1,21 +1,9 @@
 ﻿using ProjectForYP.ClassHelper;
 using ProjectForYP.DatabaseHelper;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace ProjectForYP.pages
@@ -42,10 +30,11 @@ namespace ProjectForYP.pages
         {
             InitializeComponent();
             GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).ToList();
-
+            allrequest.ItemsSource = OdbConnectionHelper.entObj.Request.ToList();
             GridList1.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).ToList();
-            
+
             SetTimer();
+            SetTimer1();
         }
 
         private void SetTimer()
@@ -55,17 +44,29 @@ namespace ProjectForYP.pages
             dispatcherTimer.Start();
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private async void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).ToList();
 
+            GridList.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).ToList();
             GridList1.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).ToList();
 
             donerequest.Text = $"Количество выполненых: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).Count())}";
             workrequest.Text = $"Количество в работе: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 1).Count())}";
             newrequest.Text = $"Количество новых: {Convert.ToString(OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 3).Count())}";
+
         }
 
+        private void SetTimer1()
+        {
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick1);
+            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+            dispatcherTimer.Start();
+        }
+
+        private async void dispatcherTimer_Tick1(object sender, EventArgs e)
+        {
+            allrequest.ItemsSource = OdbConnectionHelper.entObj.Request.ToList();
+        }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +87,7 @@ namespace ProjectForYP.pages
             //MessageBox.Show(Convert.ToString((date2 - date1).TotalDays));
 
             Request request = (Request)(sender as Button).DataContext;
-            MessageBox.Show($"Количество дней: {Convert.ToString(Math.Round(((DateTime)request.completionDate - (DateTime)request.startDate).TotalDays))}\n Используемые детали: {request.repairParts}" , "Отчет"
+            MessageBox.Show($"Количество дней: {Convert.ToString(Math.Round(((DateTime)request.completionDate - (DateTime)request.startDate).TotalDays))}\n Используемые детали: {request.repairParts}", "Отчет"
                 , MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

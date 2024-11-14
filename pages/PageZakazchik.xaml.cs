@@ -64,9 +64,9 @@ namespace ProjectForYP.pages
             //cmbstatus.DisplayMemberPath = "RequestStatuse";
             //cmbstatus.ItemsSource = OdbConnectionHelper.entObj.RequestStatus.ToList();
 
-            cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
-            cmbdescription.DisplayMemberPath = "ProblemDescryption1";
-            cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
+            //cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
+            //cmbdescription.DisplayMemberPath = "ProblemDescryption1";
+            //cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
 
             cmbColor.SelectedValuePath = "Id_Color";
             cmbColor.DisplayMemberPath = "Color1";
@@ -103,7 +103,7 @@ namespace ProjectForYP.pages
             surname = textBoxsurName.Text;
             name = TextBoxName.Text;
             middlename = texboxMiddleName.Text;
-            description = Convert.ToString(cmbdescription.SelectedValue);
+            description = Convert.ToString(cmbdescription.Text);
             model = textBoxTechModel.Text;
             proizvodil = textBoxTecproizvoditel.Text;
             techtype = Convert.ToString(cmbTechType.SelectedValue);
@@ -123,7 +123,7 @@ namespace ProjectForYP.pages
                 TechModelName = model,
                 Id_Color = Convert.ToInt32(colortech),
                 id_requestStatys = 3,
-                id_problemDescryption = Convert.ToInt32(description),
+                problemDescryption = description ,
                 completionDate = null,
                 clientID = idclient
             };
@@ -155,7 +155,7 @@ namespace ProjectForYP.pages
             cmbTechType.SelectedItem = null;
             textBoxTecproizvoditel.Clear();
             textBoxTechModel.Clear();
-            cmbdescription.SelectedItem = null;
+            cmbdescription.Clear();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

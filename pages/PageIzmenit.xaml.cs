@@ -29,15 +29,37 @@ namespace ProjectForYP.pages
             proizvodil = Convert.ToString(request.TechModelManufaacturer);
             model = Convert.ToString(request.TechModelName);
             color = Convert.ToString(request.Color.Color1);
-            opisanie = Convert.ToString(request.ProblemDescryption.ProblemDescryption1);
+            opisanie = Convert.ToString(request.problemDescryption);
 
             cmbTechType.SelectedIndex = Convert.ToInt32(request.Id_homeTechType);
             textBoxTecproizvoditel.Text = proizvodil;
             textBoxTechModel.Text = model;
             cmbColor.SelectedIndex = Convert.ToInt32(request.Id_Color);
-            cmbdescription.SelectedIndex = Convert.ToInt32(request.id_problemDescryption);
+            cmbdescription.Text = (string)request.problemDescryption;
 
             dateload();
+
+            foreach (var item in cmbTechType.Items)
+            {
+
+                cmbTechType.SelectedItem = item;
+                if (viewtech == (string)cmbTechType.Text)
+                {
+                    break;
+                }
+
+            }
+
+            foreach (var item in cmbColor.Items)
+            {
+
+                cmbColor.SelectedItem = item;
+                if (color == (string)cmbColor.Text)
+                {
+                    break;
+                }
+
+            }
         }
 
         private void dateload()
@@ -50,9 +72,9 @@ namespace ProjectForYP.pages
             //cmbstatus.DisplayMemberPath = "RequestStatuse";
             //cmbstatus.ItemsSource = OdbConnectionHelper.entObj.RequestStatus.ToList();
 
-            cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
-            cmbdescription.DisplayMemberPath = "ProblemDescryption1";
-            cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
+            //cmbdescription.SelectedValuePath = "Id_ProblemDescryption";
+            //cmbdescription.DisplayMemberPath = "ProblemDescryption1";
+            //cmbdescription.ItemsSource = OdbConnectionHelper.entObj.ProblemDescryption.ToList();
 
             cmbColor.SelectedValuePath = "Id_Color";
             cmbColor.DisplayMemberPath = "Color1";
@@ -70,11 +92,11 @@ namespace ProjectForYP.pages
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             var requestt = OdbConnectionHelper.entObj.Request.Find(reqId);
-            requestt.Id_homeTechType = cmbTechType.SelectedIndex;
+            requestt.Id_homeTechType = cmbTechType.SelectedIndex + 1;
             requestt.TechModelManufaacturer = textBoxTecproizvoditel.Text;
             requestt.TechModelName = textBoxTechModel.Text;
-            requestt.Id_Color = cmbColor.SelectedIndex;
-            requestt.id_problemDescryption = cmbdescription.SelectedIndex;
+            requestt.Id_Color = cmbColor.SelectedIndex + 1;
+            requestt.problemDescryption = cmbdescription.Text;
 
             if (resulte == MessageBoxResult.Yes)
             {

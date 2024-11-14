@@ -5,21 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c4033d65e3e241619f5d66a46de97a39" Name="Diagram1">
-        <EntityTypeShape EntityType="YP1Model.Color" Width="1.5" PointX="0.75" PointY="5.5" />
-        <EntityTypeShape EntityType="YP1Model.Comment" Width="1.5" PointX="5.25" PointY="2.125" />
-        <EntityTypeShape EntityType="YP1Model.HomeTechType" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="YP1Model.ProblemDescryption" Width="1.5" PointX="0.75" PointY="10.25" />
-        <EntityTypeShape EntityType="YP1Model.Request" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="YP1Model.RequestStatus" Width="2" PointX="0.75" PointY="7.875" />
-        <EntityTypeShape EntityType="YP1Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
-        <EntityTypeShape EntityType="YP1Model.Type" Width="1.5" PointX="0.75" PointY="13.375" />
-        <EntityTypeShape EntityType="YP1Model.User" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="YP1Model.Color" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="YP1Model.Comment" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="YP1Model.HomeTechType" Width="1.5" PointX="6" PointY="7.125" />
+        <EntityTypeShape EntityType="YP1Model.ProblemDescryption" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="YP1Model.Request" Width="1.5" PointX="8.25" PointY="2.625" />
+        <EntityTypeShape EntityType="YP1Model.RequestStatus" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="YP1Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="YP1Model.Type" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="YP1Model.User" Width="1.5" PointX="3" PointY="3.25" />
         <AssociationConnector Association="YP1Model.FK_Request_Color" />
         <AssociationConnector Association="YP1Model.FK_Comment_Request" />
         <AssociationConnector Association="YP1Model.FK_Comment_User" />
         <AssociationConnector Association="YP1Model.FK__Request__Id_home__440B1D61" />
-        <AssociationConnector Association="YP1Model.FK__Request__id_prob__45F365D3" />
         <AssociationConnector Association="YP1Model.FK__Request__id_requ__46E78A0C" />
+        <AssociationConnector Association="YP1Model.FK_Request_User" />
+        <AssociationConnector Association="YP1Model.FK_Request_User1" />
         <AssociationConnector Association="YP1Model.FK__User__typeId__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
