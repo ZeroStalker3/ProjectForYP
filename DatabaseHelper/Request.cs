@@ -26,7 +26,7 @@ namespace ProjectForYP.DatabaseHelper
         public string TechModelManufaacturer { get; set; }
         public string TechModelName { get; set; }
         public Nullable<int> Id_Color { get; set; }
-        public string problemDescryption { get; set; }
+        public Nullable<int> id_problemDescryption { get; set; }
         public Nullable<int> id_requestStatys { get; set; }
         public Nullable<System.DateTime> completionDate { get; set; }
         public string repairParts { get; set; }
@@ -37,8 +37,7 @@ namespace ProjectForYP.DatabaseHelper
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual HomeTechType HomeTechType { get; set; }
+        public virtual ProblemDescryption ProblemDescryption { get; set; }
         public virtual RequestStatus RequestStatus { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

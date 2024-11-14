@@ -211,8 +211,8 @@
   <ItemGroup>
     <Content Include="DatabaseHelper\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="DatabaseHelper\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

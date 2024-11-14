@@ -7,82 +7,75 @@
       mc:Ignorable="d" 
       Title="PageDopInfor">
 
-    <Grid>
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <TextBlock 
-                x:Name="loq"
-                Height="30"
-                Width="120"/>
-            <DockPanel>
-                <TextBlock 
-                    Height="30"
-                    Width="130"
-                    Margin="5"
-                    Text="Фамилия"
-                    FontSize="14pt"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBox
-                    Margin="5"
-                    Height="30"
-                    Name="familia"
-                    Width="130"/>
+    
+    <Grid Background="WhiteSmoke">
+        <Grid.Resources>
+          
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="10,5"/>
+                <Setter Property="Background" Value="MintCream"/>
+                <Setter Property="BorderBrush" Value="#FF00B313"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Width" Value="250"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Background" Value="#FF0C9226"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Width" Value="140"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+
+            <Style TargetType="TextBlock" x:Key="TitleStyle">
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="#2c3e50"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="400" Background="#FFDBFFEC">
+            <TextBlock x:Name="loq" Height="30" Width="120" Style="{StaticResource TitleStyle}" />
+
+           
+            <DockPanel Margin="5" Height="40" Width="350">
+                <TextBlock Margin="0 0 10 0" FontSize="12pt" VerticalAlignment="Center" Text="Фамилия"/>
+                <TextBox x:Name="familia" HorizontalAlignment="Right"/>
             </DockPanel>
-            <DockPanel>
-                <TextBlock 
-                    Height="30"
-                    Width="130"
-                    Margin="5"
-                    Text="Имя"
-                    FontSize="14pt"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBox
-                    Margin="5"
-                    Name="Name"
-                    Height="30"
-                    Width="130"/>
+
+           
+            <DockPanel Margin="5" Height="40" Width="350">
+                <TextBlock Margin="0 0 10 0" FontSize="12pt" VerticalAlignment="Center" Text="Имя"/>
+                <TextBox x:Name="Name" HorizontalAlignment="Right"/>
             </DockPanel>
-            <DockPanel>
-                <TextBlock 
-                    Height="30"
-                    Width="130"
-                    Margin="5"
-                    Text="Отчество"
-                    FontSize="14pt"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBox
-                    Margin="5"
-                    Height="30"
-                    Name="otchestvo"
-                    Width="130"/>
+
+           
+            <DockPanel Margin="5" Height="40" Width="350">
+                <TextBlock Margin="0 0 10 0" FontSize="12pt" VerticalAlignment="Center" Text="Отчество"/>
+                <TextBox x:Name="otchestvo" HorizontalAlignment="Right" />
             </DockPanel>
-            <DockPanel>
-                <TextBlock 
-                    Height="30"
-                    Width="130"
-                    Margin="5"
-                    Text="Телефон"
-                    FontSize="14pt"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-                <TextBox
-                    Margin="5"
-                    Name="Phon"
-                    Height="30"
-                    Width="130"/>
+
+           
+            <DockPanel Margin="5" Height="40" Width="350">
+                <TextBlock Margin="0 0 10 0" FontSize="12pt" VerticalAlignment="Center" Text="Телефон"/>
+                <TextBox x:Name="Phon" HorizontalAlignment="Right"/>
             </DockPanel>
-            <Button HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Height="30"
-                    Margin="5"
-                    Width="120"
-                    Content="Продолжить"
-                    Name="Nex"
-                    Click="Nex_Click"/>
+
+            
+            <Button x:Name="Nex" Click="Nex_Click" Content="Продолжить" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>
