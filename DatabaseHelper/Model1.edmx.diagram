@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c4033d65e3e241619f5d66a46de97a39" Name="Diagram1">
-        <EntityTypeShape EntityType="YP1Model.Color" Width="1.5" PointX="6" PointY="9.5" />
-        <EntityTypeShape EntityType="YP1Model.Comment" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="YP1Model.HomeTechType" Width="1.5" PointX="6" PointY="7.125" />
-        <EntityTypeShape EntityType="YP1Model.ProblemDescryption" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="YP1Model.Request" Width="1.5" PointX="8.25" PointY="2.625" />
-        <EntityTypeShape EntityType="YP1Model.RequestStatus" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="YP1Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="YP1Model.Type" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="YP1Model.User" Width="1.5" PointX="3" PointY="3.25" />
-        <AssociationConnector Association="YP1Model.FK_Request_Color" />
-        <AssociationConnector Association="YP1Model.FK_Comment_Request" />
-        <AssociationConnector Association="YP1Model.FK_Comment_User" />
-        <AssociationConnector Association="YP1Model.FK__Request__Id_home__440B1D61" />
-        <AssociationConnector Association="YP1Model.FK__Request__id_requ__46E78A0C" />
-        <AssociationConnector Association="YP1Model.FK_Request_User" />
-        <AssociationConnector Association="YP1Model.FK_Request_User1" />
-        <AssociationConnector Association="YP1Model.FK__User__typeId__4BAC3F29" />
+      <Diagram DiagramId="b74e98c32464494b9e0748a4a1f822fc" Name="Diagram1">
+        <EntityTypeShape EntityType="YP1Model.Color" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.Comment" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.HomeTechType" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.ProblemDescryption" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.Request" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.RequestStatus" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.Type" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YP1Model.User" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="YP1Model.FK_Request_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK_Comment_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK__Request__Id_home__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK__Request__id_requ__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK_Request_User" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK_Request_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="YP1Model.FK__User__typeId__4BAC3F29" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

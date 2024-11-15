@@ -13,10 +13,10 @@ namespace ProjectForYP.DatabaseHelper
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class YP1Entities2 : DbContext
+    public partial class YP1Entities1 : DbContext
     {
-        public YP1Entities2()
-            : base("name=YP1Entities2")
+        public YP1Entities1()
+            : base("name=YP1Entities1")
         {
         }
     

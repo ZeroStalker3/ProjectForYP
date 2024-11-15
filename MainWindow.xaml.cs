@@ -27,7 +27,7 @@ namespace ProjectForYP
         {
             InitializeComponent();
 
-            OdbConnectionHelper.entObj = new YP1Entities2();
+            OdbConnectionHelper.entObj = new YP1Entities1();
             FrameApp.frmObj = MainFrm;
             FrameApp.frmObj.Navigate(new PageLogin());
         }

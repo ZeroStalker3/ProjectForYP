@@ -7,53 +7,68 @@
       mc:Ignorable="d" 
       Title="PageLogin">
 
-    <Grid>
-        
-        <StackPanel Margin="10"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center">
-            <TextBlock Text="ООО БытСервис" 
-                   FontSize="20pt" 
-                   HorizontalAlignment="Center"
-                       Height="40"
-                   VerticalAlignment="Top"
-                   Margin="0 10 0 0"/>
-            <TextBlock 
-                Text="Логин: " 
-                Margin="0 10 0 10"
-                FontSize="15pt"/>
-            <TextBox 
-                x:Name="LoginTxt"
-                Height="30" 
-                VerticalContentAlignment="Center"
-                Width="225"/>
+    <Page.Resources>
 
-            <TextBlock 
-                Text="Пароль: " 
-                Margin="0 10 0 10"
-                FontSize="15pt"/>
-            <PasswordBox 
-                Name="PassBox"
-                Height="30" 
-                VerticalContentAlignment="Center"
-                Width="225" PreviewKeyDown="PassBox_PreviewKeyDown"/>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Width" Value="225"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#F4F4F4"/>
+            <Setter Property="BorderBrush" Value="#C8C8C8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
 
-            <DockPanel Margin="0 10 0 0">
-                <Button 
-                    HorizontalAlignment="Left" 
-                    Height="30"
-                    Name="Log"
-                    Content="Войти"
-                    Click="Log_Click"
-                    Width="105"/>
-                <Button 
-                    HorizontalAlignment="Right" 
-                    Height="30" 
-                    Name="Reg"
-                    Click="Reg_Click"
-                    Content="Зарегистрировать"
-                    Width="105"/>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Width" Value="225"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#F4F4F4"/>
+            <Setter Property="BorderBrush" Value="#C8C8C8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Width" Value="105"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#388E3C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#FFDBFFEC">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="ООО БытСервис" FontSize="20" HorizontalAlignment="Center" Height="40" VerticalAlignment="Top" Margin="0,10"/>
+
+            <TextBlock Text="Логин:" Margin="0,10" FontSize="15"/>
+            <TextBox x:Name="LoginTxt" Background="MintCream" BorderBrush="#FF00B313"/>
+
+            <TextBlock Text="Пароль:" Margin="0,10" FontSize="15"/>
+            <PasswordBox Name="PassBox" PreviewKeyDown="PassBox_PreviewKeyDown" Background="MintCream"/>
+
+            <DockPanel Margin="0,20,0,0">
+                <Button Name="Log" Content="Войти" Click="Log_Click" HorizontalAlignment="Left" Background="#FF44E22E"/>
+                <Button Name="Reg" Content="Зарегистрировать" Click="Reg_Click" HorizontalAlignment="Right" FontSize="8pt" Background="#FF07980D"/>
             </DockPanel>
-        </StackPanel>       
+        </StackPanel>
     </Grid>
 </Page>

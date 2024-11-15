@@ -44,7 +44,7 @@ namespace ProjectForYP.pages
         private void SetTimer()
         {
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
             dispatcherTimer.Start();
         }
 
@@ -110,10 +110,10 @@ namespace ProjectForYP.pages
             colortech = Convert.ToString(cmbColor.SelectedValue);
             Int64 phone = Convert.ToInt64(textBoxPhone.Text);
 
-            ProblemDescryption problemDescryption = new ProblemDescryption()
-            {
-                ProblemDescryption1 = description
-            };
+            //ProblemDescryption problemDescryption = new ProblemDescryption()
+            //{
+            //    ProblemDescryption1 = description
+            //};
 
             Request request = new Request()
             {
