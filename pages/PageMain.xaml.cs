@@ -34,7 +34,7 @@ namespace ProjectForYP.pages
             GridList1.ItemsSource = OdbConnectionHelper.entObj.Request.Where(x => x.id_requestStatys == 2).ToList();
 
             SetTimer();
-            SetTimer1();
+            //SetTimer1();
         }
 
         private void SetTimer()
@@ -56,17 +56,17 @@ namespace ProjectForYP.pages
 
         }
 
-        private void SetTimer1()
-        {
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick1);
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
-            dispatcherTimer.Start();
-        }
+        //private void SetTimer1()
+        //{
+        //    dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick1);
+        //    dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+        //    dispatcherTimer.Start();
+        //}
 
-        private async void dispatcherTimer_Tick1(object sender, EventArgs e)
-        {
-            allrequest.ItemsSource = OdbConnectionHelper.entObj.Request.ToList();
-        }
+        //private async void dispatcherTimer_Tick1(object sender, EventArgs e)
+        //{
+        //    allrequest.ItemsSource = OdbConnectionHelper.entObj.Request.ToList();
+        //}
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
