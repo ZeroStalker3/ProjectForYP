@@ -93,6 +93,58 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
+            <TabItem Header="Изменение заявки">
+                <Grid>
+                    <DataGrid
+                        IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    x:Name="GridList">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding startDate}"
+                            Header="Дата заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding requestID}"
+                            Header="Номер заказа"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding RequestStatus.RequestStatuse}"
+                            Header="Статус"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding HomeTechType.HomeTechType1}"
+                            Header="Тип"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelManufaacturer}"
+                            Header="Производитель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding TechModelName}"
+                            Header="модель"/>
+                            <DataGridTextColumn
+                            Width="*"
+                            Binding="{Binding completionDate}"
+                            Header="Дата завершения"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button 
+                                        Name="Edit" 
+                                        Click="Edit_Click" 
+                                        Height="30" 
+                                        Width="120"
+                                        Content="Изменить"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Frame x:Name="editFrm" NavigationUIVisibility="Hidden"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Button Content="Назад" Name="Back" Click="Back_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" Width="100" Height="30"/>
     </Grid>

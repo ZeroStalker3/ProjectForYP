@@ -45,10 +45,10 @@
           <Property Name="TechModelManufaacturer" Type="nvarchar" MaxLength="50" />
           <Property Name="TechModelName" Type="nvarchar" MaxLength="50" />
           <Property Name="Id_Color" Type="int" />
-          <Property Name="id_problemDescryption" Type="int" />
+          <Property Name="problemDescryption" Type="nvarchar" MaxLength="50" />
           <Property Name="id_requestStatys" Type="int" />
           <Property Name="completionDate" Type="date" />
-          <Property Name="repairParts" Type="nvarchar" MaxLength="50" />
+          <Property Name="repairParts" Type="nvarchar(max)" />
           <Property Name="masterId" Type="int" />
           <Property Name="clientID" Type="int" />
         </EntityType>
@@ -101,18 +101,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Request__id_prob__45F365D3">
-          <End Role="ProblemDescryption" Type="Self.ProblemDescryption" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProblemDescryption">
-              <PropertyRef Name="Id_ProblemDescryption" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="id_problemDescryption" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Request__id_requ__46E78A0C">
           <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
           <End Role="Request" Type="Self.Request" Multiplicity="*" />
@@ -173,6 +161,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Request_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="masterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище YP1ModelContainer">
           <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
@@ -185,10 +197,6 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Request__Id_home__440B1D61" Association="Self.FK__Request__Id_home__440B1D61">
             <End Role="HomeTechType" EntitySet="HomeTechType" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Request__id_prob__45F365D3" Association="Self.FK__Request__id_prob__45F365D3">
-            <End Role="ProblemDescryption" EntitySet="ProblemDescryption" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK__Request__id_requ__46E78A0C" Association="Self.FK__Request__id_requ__46E78A0C">
@@ -209,6 +217,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_Request_Color" Association="Self.FK_Request_Color">
             <End Role="Color" EntitySet="Color" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User1" Association="Self.FK_Request_User1">
+            <End Role="User" EntitySet="User" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
         </EntityContainer>
@@ -250,29 +266,29 @@
           </Key>
           <Property Name="Id_ProblemDescryption" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProblemDescryption1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Request" Relationship="Self.FK__Request__id_prob__45F365D3" FromRole="ProblemDescryption" ToRole="Request" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="requestID" />
           </Key>
           <Property Name="requestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="startDate" Type="DateTime" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Id_homeTechType" Type="Int32" />
           <Property Name="TechModelManufaacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TechModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id_Color" Type="Int32" />
-          <Property Name="id_problemDescryption" Type="Int32" />
+          <Property Name="problemDescryption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_requestStatys" Type="Int32" />
-          <Property Name="completionDate" Type="DateTime" />
-          <Property Name="repairParts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="completionDate" Type="DateTime" Precision="0" />
+          <Property Name="repairParts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="masterId" Type="Int32" />
           <Property Name="clientID" Type="Int32" />
           <NavigationProperty Name="Color" Relationship="Self.FK_Request_Color" FromRole="Request" ToRole="Color" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Request" FromRole="Request" ToRole="Comment" />
           <NavigationProperty Name="HomeTechType" Relationship="Self.FK__Request__Id_home__440B1D61" FromRole="Request" ToRole="HomeTechType" />
-          <NavigationProperty Name="ProblemDescryption" Relationship="Self.FK__Request__id_prob__45F365D3" FromRole="Request" ToRole="ProblemDescryption" />
           <NavigationProperty Name="RequestStatus" Relationship="Self.FK__Request__id_requ__46E78A0C" FromRole="Request" ToRole="RequestStatus" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Request_User" FromRole="Request" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Request_User1" FromRole="Request" ToRole="User" />
         </EntityType>
         <EntityType Name="RequestStatus">
           <Key>
@@ -313,6 +329,8 @@
           <Property Name="passsword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="typeId" Type="Int32" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Request" Relationship="Self.FK_Request_User" FromRole="User" ToRole="Request" />
+          <NavigationProperty Name="Request1" Relationship="Self.FK_Request_User1" FromRole="User" ToRole="Request" />
           <NavigationProperty Name="Type" Relationship="Self.FK__User__typeId__4BAC3F29" FromRole="User" ToRole="Type" />
         </EntityType>
         <Association Name="FK_Request_Color">
@@ -363,18 +381,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Request__id_prob__45F365D3">
-          <End Role="ProblemDescryption" Type="Self.ProblemDescryption" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProblemDescryption">
-              <PropertyRef Name="Id_ProblemDescryption" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="id_problemDescryption" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Request__id_requ__46E78A0C">
           <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
           <End Role="Request" Type="Self.Request" Multiplicity="*" />
@@ -384,6 +390,30 @@
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="id_requestStatys" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="masterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="clientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="YP1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="YP1Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Color" EntityType="Self.Color" />
           <EntitySet Name="Comment" EntityType="Self.Comment" />
           <EntitySet Name="HomeTechType" EntityType="Self.HomeTechType" />
@@ -425,12 +455,16 @@
             <End Role="HomeTechType" EntitySet="HomeTechType" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
-          <AssociationSet Name="FK__Request__id_prob__45F365D3" Association="Self.FK__Request__id_prob__45F365D3">
-            <End Role="ProblemDescryption" EntitySet="ProblemDescryption" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
           <AssociationSet Name="FK__Request__id_requ__46E78A0C" Association="Self.FK__Request__id_requ__46E78A0C">
             <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User1" Association="Self.FK_Request_User1">
+            <End Role="User" EntitySet="User" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK__User__typeId__4BAC3F29" Association="Self.FK__User__typeId__4BAC3F29">
@@ -443,7 +477,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище YP1ModelContainer" CdmEntityContainer="YP1Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище YP1ModelContainer" CdmEntityContainer="YP1Entities1">
           <EntitySetMapping Name="Color">
             <EntityTypeMapping TypeName="YP1Model.Color">
               <MappingFragment StoreEntitySet="Color">
@@ -487,7 +521,7 @@
                 <ScalarProperty Name="TechModelManufaacturer" ColumnName="TechModelManufaacturer" />
                 <ScalarProperty Name="TechModelName" ColumnName="TechModelName" />
                 <ScalarProperty Name="Id_Color" ColumnName="Id_Color" />
-                <ScalarProperty Name="id_problemDescryption" ColumnName="id_problemDescryption" />
+                <ScalarProperty Name="problemDescryption" ColumnName="problemDescryption" />
                 <ScalarProperty Name="id_requestStatys" ColumnName="id_requestStatys" />
                 <ScalarProperty Name="completionDate" ColumnName="completionDate" />
                 <ScalarProperty Name="repairParts" ColumnName="repairParts" />
@@ -554,6 +588,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

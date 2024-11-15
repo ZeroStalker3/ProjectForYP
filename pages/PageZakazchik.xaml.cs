@@ -110,10 +110,10 @@ namespace ProjectForYP.pages
             colortech = Convert.ToString(cmbColor.SelectedValue);
             Int64 phone = Convert.ToInt64(textBoxPhone.Text);
 
-            ProblemDescryption problemDescryption = new ProblemDescryption()
-            {
-                ProblemDescryption1 = description
-            };
+            //ProblemDescryption problemDescryption = new ProblemDescryption()
+            //{
+            //    ProblemDescryption1 = description
+            //};
 
             Request request = new Request()
             {

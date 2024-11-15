@@ -14,16 +14,7 @@ namespace ProjectForYP.DatabaseHelper
     
     public partial class ProblemDescryption
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProblemDescryption()
-        {
-            this.Request = new HashSet<Request>();
-        }
-    
         public int Id_ProblemDescryption { get; set; }
         public string ProblemDescryption1 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Request { get; set; }
     }
 }

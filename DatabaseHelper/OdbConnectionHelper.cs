@@ -8,6 +8,6 @@ namespace ProjectForYP.DatabaseHelper
 {
     class OdbConnectionHelper
     {
-        public static YP1Entities2 entObj;
+        public static YP1Entities1 entObj;
     }
 }

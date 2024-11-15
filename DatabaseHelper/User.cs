@@ -18,6 +18,8 @@ namespace ProjectForYP.DatabaseHelper
         public User()
         {
             this.Comment = new HashSet<Comment>();
+            this.Request = new HashSet<Request>();
+            this.Request1 = new HashSet<Request>();
         }
     
         public int UserId { get; set; }
@@ -31,6 +33,10 @@ namespace ProjectForYP.DatabaseHelper
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Request { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Request1 { get; set; }
         public virtual Type Type { get; set; }
     }
 }

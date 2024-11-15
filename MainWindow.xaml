@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
-        Height="450" Width="800">
-    <Grid>
+             Height="540" Width="900">
+    
+    <Grid Background="PaleGreen">
         <StackPanel>
             <Frame x:Name="MainFrm" 
                NavigationUIVisibility="Hidden"
